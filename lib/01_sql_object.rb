@@ -100,20 +100,20 @@ class SQLObject
   end
 
   def update
-    values_to_insert = self.class_columns
+    values_to_insert = self.class.columns
       .map { |attr| "#{attr} = ?" }.join(", ")
     
     DBConnection.execute(<<-SQL, *attribute_values, id)
       UPDATE
         #{self.class.table_name}
       SET
-        #{set_line}
+        #{values_to_insert}
       WHERE
         #{self.class.table_name}.id = ?
     SQL
   end
 
   def save
-    # ...
+    id.nil? ? insert : update
   end
 end
