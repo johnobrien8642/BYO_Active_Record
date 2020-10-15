@@ -12,9 +12,9 @@ describe 'AssocOptions' do
 
     it 'allows overrides' do
       options = BelongsToOptions.new('owner',
-                                     foreign_key: :human_id,
-                                     class_name: 'Human',
-                                     primary_key: :human_id
+        foreign_key: :human_id,
+        class_name: 'Human',
+        primary_key: :human_id
       )
 
       expect(options.foreign_key).to eq(:human_id)
