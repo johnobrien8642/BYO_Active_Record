@@ -7,8 +7,8 @@ module Associatable
   def has_one_through(name, through_name, source_name)
     define_method(name) do
       through_options = self.class.assoc_options[through_name]
-      source_options =
-        through_options.model_class.assoc_options[source_name]
+        source_options =
+          through_options.model_class.assoc_options[source_name]
 
       through_table = through_options.table_name
       through_pk = through_options.primary_key
